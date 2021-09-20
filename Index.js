@@ -5,15 +5,9 @@ document.getElementById("btn").onclick = function (){
             
             let hexArr = parseToHex(parseToInt(strArr));
             let convertedHexString = "#"+hexArr[0]+hexArr[1]+hexArr[2];
-            console.log(convertedHexString);
             document.getElementById('converted').innerText=convertedHexString;
 
         }
-       //calculation();
-
-
-
-
 };
 
 function checkIfvalid(arr) {
