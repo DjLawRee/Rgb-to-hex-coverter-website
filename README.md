@@ -28,15 +28,23 @@ function checkIfvalid(arr) {
     if (arr.length == 3 ){
         for(let i =0 ; i <3 ; i++){
             if(isNaN(arr[i])){
-                console.log(arr[i]);
+                
                 alert("It appears that you try to hack me , please enter only numeric values!");
                 return false;
             }
+            else if(arr[i]==""){
+                alert("It appears that you left an empty spot ! Please write three numbers , spearated by a comma !");
+                return false;
+            }
         }  return true;
-    } else{
-        alert("too many numbers! Please write three numbers , spearated by a comma !");
+            
+    } else if(arr.length>3){
+        alert("too many values! Please write three numbers , spearated by a comma !");
         return false;
-    }
+    } else (arr.length<3) ;
+        alert("not enoguh values! Please write three numbers , spearated by a comma !");
+        return false;
+    
 
 }
 ``` 
