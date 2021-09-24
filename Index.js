@@ -1,7 +1,7 @@
 document.getElementById("btn").onclick = function (){
      let value = document.getElementById("inp").value;
      const strArr = value.split(",");
-        if(checkIfvalid(strArr) == true){
+        if(checkIfvalid(strArr)){
             
             let hexArr = parseToHex(parseToInt(strArr));
             let convertedHexString = "#"+hexArr[0]+hexArr[1]+hexArr[2];
@@ -11,29 +11,19 @@ document.getElementById("btn").onclick = function (){
 };
 
 function checkIfvalid(arr) {
-   
-    console.log(arr);
+    let msg = " Please write three numbers , spearated by a comma !";
     if (arr.length == 3 ){
         for(let i =0 ; i <3 ; i++){
-            if(isNaN(arr[i])){
-                
-                alert("It appears that you try to hack me , please enter only numeric values!");
+            if(!isNumber(arr[i])){
+                alert(msg);
                 return false;
             }
-            else if(arr[i]==""){
-                alert("It appears that you left an empty spot ! Please write three numbers , spearated by a comma !");
-                return false;
-            }
-        }  return true;
-            
-    } else if(arr.length>3){
-        alert("too many values! Please write three numbers , spearated by a comma !");
+        }  
+        return true;         
+    } else {
+        alert(msg);
         return false;
-    } else (arr.length<3) ;
-        alert("not enoguh values! Please write three numbers , spearated by a comma !");
-        return false;
-    
-
+    }
 }
 
 function parseToInt(arr){
@@ -56,4 +46,9 @@ function parseToHex(arr){
         hexArr[index]=Number(number).toString(16).padStart(2,'0');
     })
     return hexArr;
+}
+
+function isNumber(num){
+    let answer = /^\d+$/.test(num);
+    return answer;
 }
